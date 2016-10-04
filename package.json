@@ -1,0 +1,93 @@
+{
+  "name": "ts-skeleton-plugin",
+  "version": "0.1.0",
+  "description": "A Typescript skeleton for writing Aurelia plugins.",
+  "keywords": [
+    "aurelia",
+    "plugin",
+    "skeleton",
+    "typescript"
+  ],
+  "homepage": "https://github.com/nexbit/ts-skeleton-plugin",
+  "bugs": {
+    "url": "https://github.com/nexbit/ts-skeleton-plugin/issues"
+  },
+  "license": "MIT",
+  "author": "Paolo Furini <info@nexbit.it>",
+  "main": "dist/commonjs/ts-skeleton-plugin.js",
+  "typings": "dist/commonjs/ts-skeleton-plugin.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexbit/ts-skeleton-plugin"
+  },
+  "scripts": {
+    "test": "cross-env ./node_modules/.bin/tsc && cross-env ./node_modules/karma/bin/karma start --single-run",
+    "test-watch": "concurrently \"./node_modules/.bin/tsc --watch\" \"./node_modules/karma/bin/karma start\"",
+    "prebuild:compile": "rimraf 'dist/**'",
+    "build:compile": "concurrently \"node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/amd\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/commonjs --module commonjs\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/native-modules --module es2015\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/system --module system\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/es2015 --target es2015 --module es2015\" || true",
+    "build": "npm run build:compile",
+    "postbuild": "npm run build:doc",
+    "prebuild:doc": "rimraf 'doc/api.json' && rimraf 'dist/doc-temp/**' && cross-env ./node_modules/.bin/tsc --project tsconfig.build.json --outFile dist/doc-temp/${npm-package-name}.js && node doc/shape-defs",
+    "build:doc": "cross-env ./node_modules/.bin/typedoc --json doc/api.json --excludeExternals --includeDeclarations --mode modules --target ES6 --name ${npm-package-name}-docs --ignoreCompilerErrors --tsconfig doc/tsconfig.json dist/doc-temp/",
+    "postbuild:doc": "concurrently \"node doc/shape-doc\" \"rimraf 'dist/doc-temp/**'\""
+  },
+  "jspm": {
+    "registry": "npm",
+    "jspmPackage": true,
+    "main": "ts-skeleton-plugin",
+    "format": "amd",
+    "directories": {
+      "dist": "dist/amd"
+    },
+    "peerDependencies": {
+      "aurelia-binding": "^1.0.4",
+      "aurelia-dependency-injection": "^1.0.0",
+      "aurelia-templating": "^1.1.0"
+    },
+    "dependencies": {
+      "aurelia-binding": "^1.0.4",
+      "aurelia-dependency-injection": "^1.0.0",
+      "aurelia-templating": "^1.1.0"
+    },
+    "devDependencies": {}
+  },
+  "dependencies": {
+    "aurelia-binding": "^1.0.4",
+    "aurelia-dependency-injection": "^1.0.0",
+    "aurelia-templating": "^1.1.0"
+  },
+  "devDependencies": {
+    "aurelia-bootstrapper": "^1.0.0",
+    "aurelia-pal-browser": "^1.0.0",
+    "aurelia-polyfills": "^1.1.0",
+    "aurelia-testing": "^1.0.0-beta.2.0.0",
+    "concurrently": "^2.2.0",
+    "cross-env": "^2.0.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-requirejs": "^1.0.0",
+    "requirejs": "^2.2.0",
+    "requirejs-text": "^2.0.12",
+    "rimraf": "^2.5.4",
+    "typedoc": "^0.4.5",
+    "typescript": "^2.0.0"
+  },
+  "aurelia": {
+    "build": {
+      "resources": [
+        "my-component"
+      ]
+    },
+    "documentation": {
+      "articles": [
+        {
+          "title": "ts-plugin-skeleton",
+          "href": "doc/article/en-US/ts-plugin-skeleton.md"
+        }
+      ]
+    }
+  }
+}

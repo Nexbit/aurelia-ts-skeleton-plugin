@@ -1,0 +1,4 @@
+{
+  "name": "ts-skeleton-plugin",
+  "main": "dist/amd/ts-skeleton-plugin.d.ts"
+}

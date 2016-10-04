@@ -1,0 +1,25 @@
+{
+  "name": "ts-skeleton-plugin",
+  "version": "0.1.0",
+  "description": "A Typescript skeleton for writing Aurelia plugins.",
+  "keywords": [
+    "aurelia",
+    "plugin",
+    "skeleton",
+    "typescript"
+  ],
+  "main": "dist/commonjs/ts-skeleton-plugin.js",
+  "moduleType": "node",
+  "homepage": "https://github.com/nexbit/ts-skeleton-plugin",
+  "license": "MIT",
+  "author": "Paolo Furini <info@nexbit.it>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexbit/ts-skeleton-plugin"
+  },
+  "dependencies": {
+    "aurelia-binding": "^1.0.1",
+    "aurelia-metadata": "^1.0.0",
+    "aurelia-templating": "^1.0.0"
+  }
+}
