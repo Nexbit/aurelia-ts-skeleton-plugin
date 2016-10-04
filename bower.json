@@ -10,12 +10,12 @@
   ],
   "main": "dist/commonjs/ts-skeleton-plugin.js",
   "moduleType": "node",
-  "homepage": "https://github.com/nexbit/ts-skeleton-plugin",
+  "homepage": "https://github.com/nexbit/aurelia-ts-skeleton-plugin",
   "license": "MIT",
   "author": "Paolo Furini <info@nexbit.it>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nexbit/ts-skeleton-plugin"
+    "url": "https://github.com/nexbit/aurelia-ts-skeleton-plugin"
   },
   "dependencies": {
     "aurelia-binding": "^1.0.1",
