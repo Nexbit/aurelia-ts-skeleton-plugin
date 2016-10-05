@@ -7,14 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { customElement, inlineView, bindable } from 'aurelia-templating';
 export var MyComponent = (function () {
     function MyComponent() {
-        this.greeting = "World";
+        this.greeting = 'World';
     }
     __decorate([
         bindable
     ], MyComponent.prototype, "greeting", void 0);
     MyComponent = __decorate([
         customElement('my-component'),
-        inlineView("<template>Hello ${greeting}!</template>")
+        inlineView('<template>Hello ${greeting}!</template>')
     ], MyComponent);
     return MyComponent;
 }());

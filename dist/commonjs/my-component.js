@@ -8,14 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var aurelia_templating_1 = require('aurelia-templating');
 var MyComponent = (function () {
     function MyComponent() {
-        this.greeting = "World";
+        this.greeting = 'World';
     }
     __decorate([
         aurelia_templating_1.bindable
     ], MyComponent.prototype, "greeting", void 0);
     MyComponent = __decorate([
         aurelia_templating_1.customElement('my-component'),
-        aurelia_templating_1.inlineView("<template>Hello ${greeting}!</template>")
+        aurelia_templating_1.inlineView('<template>Hello ${greeting}!</template>')
     ], MyComponent);
     return MyComponent;
 }());

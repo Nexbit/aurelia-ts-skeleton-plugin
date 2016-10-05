@@ -8,14 +8,14 @@ define(["require", "exports", 'aurelia-templating'], function (require, exports,
     "use strict";
     var MyComponent = (function () {
         function MyComponent() {
-            this.greeting = "World";
+            this.greeting = 'World';
         }
         __decorate([
             aurelia_templating_1.bindable
         ], MyComponent.prototype, "greeting", void 0);
         MyComponent = __decorate([
             aurelia_templating_1.customElement('my-component'),
-            aurelia_templating_1.inlineView("<template>Hello ${greeting}!</template>")
+            aurelia_templating_1.inlineView('<template>Hello ${greeting}!</template>')
         ], MyComponent);
         return MyComponent;
     }());
