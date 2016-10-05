@@ -21,11 +21,13 @@
     "url": "https://github.com/nexbit/aurelia-ts-skeleton-plugin"
   },
   "scripts": {
+    "pretest": "node_modules/.bin/cpx \"src/**/*.{html,css}\" dist/test/src",
     "test": "cross-env ./node_modules/.bin/tsc && cross-env ./node_modules/karma/bin/karma start --single-run",
     "test-watch": "concurrently \"./node_modules/.bin/tsc --watch\" \"./node_modules/karma/bin/karma start\"",
     "prebuild:compile": "rimraf 'dist/**'",
+    "build:copyassets": "concurrently \"node_modules/.bin/cpx \"src/**/*.{html,css}\" dist/amd\" \"node_modules/.bin/cpx \"src/**/*.{html,css}\" dist/commonjs\" \"node_modules/.bin/cpx \"src/**/*.{html,css}\" dist/native-modules\" \"node_modules/.bin/cpx \"src/**/*.{html,css}\" dist/system\" \"node_modules/.bin/cpx \"src/**/*.{html,css}\" dist/es2015\" || true",
     "build:compile": "concurrently \"node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/amd\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/commonjs --module commonjs\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/native-modules --module es2015\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/system --module system\" \"./node_modules/.bin/tsc --project tsconfig.build.json --outDir dist/es2015 --target es2015 --module es2015\" || true",
-    "build": "npm run build:compile",
+    "build": "npm run build:compile && npm run build:copyassets",
     "postbuild": "npm run build:doc",
     "prebuild:doc": "rimraf 'doc/api.json' && rimraf 'dist/doc-temp/**' && cross-env ./node_modules/.bin/tsc --project tsconfig.build.json --outFile dist/doc-temp/${npm-package-name}.js && node doc/shape-defs",
     "build:doc": "cross-env ./node_modules/.bin/typedoc --json doc/api.json --excludeExternals --includeDeclarations --mode modules --target ES6 --name ${npm-package-name}-docs --ignoreCompilerErrors --tsconfig doc/tsconfig.json dist/doc-temp/",
@@ -62,6 +64,7 @@
     "aurelia-polyfills": "^1.1.0",
     "aurelia-testing": "^1.0.0-beta.2.0.0",
     "concurrently": "^2.2.0",
+    "cpx": "^1.5.0",
     "cross-env": "^2.0.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.2.0",
